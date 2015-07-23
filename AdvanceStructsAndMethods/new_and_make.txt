@@ -1,0 +1,4 @@
+new 
+    return pointer to zero initialized heap allocated memory, used on struct, int, float
+make
+    returns a initialized type, used with map, slice, channels
