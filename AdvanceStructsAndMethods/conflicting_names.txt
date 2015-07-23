@@ -1,0 +1,26 @@
+Conflicting names:
+
+What are the rules when there are two fields with the same name (possibly a type-derived name)?
+1)   An outer name hides an inner name. This provides a way to override a field or method.
+2)   If the same name appears twice at the same level, it is an error if the name is used by the
+program. (If it’s not used, it doesn’t matter.) There are no rules to resolve the ambiguity; it must be fixed.
+
+Examples:    
+         type A struct { a int }
+         type B struct { a, b int }
+         type C struct { A; B }
+         var c C;
+
+rule (2) 
+    When we use c.a it is an error, what is meant: c.A.a or c.B.a? 
+    the compiler error is: ambiguous DOT reference c.a
+        
+    disambiguate with either c.A.a or c.B.a
+
+
+         type D struct { B; b float32 }
+         var d D;
+
+rule (1) 
+    Using d.b is ok: it is the float32, not the b from B; 
+    if we want the inner b we can get at it by d.B.b.
