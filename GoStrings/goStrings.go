@@ -5,6 +5,8 @@
 
     len terminated and variable width unlike c++, java (fixed width)
     less disk space
+
+    NOTE: Taking the address of a character in a string, like &str[i], is illegal.
 */
 package main
 
@@ -31,6 +33,9 @@ func main() {
     f.Printf("Character: %c\n", str[0])
     f.Printf("UTF-8 bytes(int16 or int -- 2 bytes): %X\n", str[0])
     f.Printf("UTF-8 code points(int32 -- 4 bytes): %U\n", str[0])
+
+    // ERROR: cannot take the address of str[0]
+    // f.Printf("%v", &str[0])
 }
 
 
