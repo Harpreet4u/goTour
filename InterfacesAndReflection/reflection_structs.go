@@ -24,7 +24,7 @@ func main() {
 
     for i:=0;i<value.NumField();i++ {
         fmt.Printf("Field %d: %v\n", i, value.Field(i))
-        // Error non-exported struct type.
+        // Runtime panic Error non-exported struct type.
         //value.Field(i).SetString("abc")
     }
     results := value.Method(0).Call(nil)
