@@ -1,0 +1,15 @@
+type Element interface{}
+
+
+// Can contain values of any type, or different types
+type Vector struct {
+    a []Element
+}
+
+func (p *Vector) At(i int) Element {
+    return p.a[i]
+}
+
+func (p *Vector) Set(i int, val Element) {
+    p.a[i] = val
+}
