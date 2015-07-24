@@ -1,0 +1,24 @@
+An interface value can also be assigned to another interface value, as long as the underlying value implements the necessary methods. This conversion is checked at runtime, and when it fails a runtime error occurs
+
+Suppose:    
+var ai AbsInterface // declares method Abs()
+type SqrInterface interface { Sqr() float }
+var si SqrInterface
+
+pp := new(Point)
+// say *Point implements Abs, Sqr
+
+var empty interface{}
+Then the following statements and type assertions are valid:
+
+empty = pp  // everything satisfies empty
+ai = empty.(AbsInterface);
+// underlying value pp implements Abs()
+// (runtime failure otherwise)
+                
+si = ai.(SqrInterface);
+// *Point has Sqr() even though AbsInterface doesn’t
+empty = si;
+// *Point implements empty set
+        
+
