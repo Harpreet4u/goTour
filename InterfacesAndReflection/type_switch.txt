@@ -1,0 +1,32 @@
+Type switch can be used for type assertions in GO:
+
+switch t := shaperI.(type) {
+case *Square:
+    fmt.Printf("The Square %T with value %v\n", t, t)
+case *Circle:
+    fmt.Printf("The Circle %T with value %v\n", t, t)
+case float32:
+    fmt.Printf("The float32 with value %v\n", t)
+case nil:
+    fmt.Printf("nil value: nothing to check")
+default:
+    fmt.Printf("Unexpected type %T", t)
+}
+ 
+
+Type classifier:
+
+func classifier(items ...interface{}) {
+    for i, x := range items {
+        switch x.(type) {
+        case bool: fmt.Printf("param #%d is a bool\n", i)  
+        case float64: fmt.Printf("param #%d is a float64\n", i)  
+        case int, int64: fmt.Printf("param #%d is a int\n", i)  
+        case nil: fmt.Printf("param #%d is nil\n", i)  
+        case string: fmt.Printf("param #%d is a string\n", i)  
+        default: fmt.Printf("param #%d is a unknown\n", i)  
+        }
+    }
+}
+
+classifier(13, -14.3, "abc", complex(1, 2), nil, true)
