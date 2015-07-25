@@ -6,6 +6,9 @@
 
     Encoding does the same thing but the output is a stream of data (implementing io.Writer); decoding starts from a stream of data (implementing io.Reader) and populates a data structure.
 
+
+    NOTE: For web use json.MarshalForHTML() which performs HTMLEscape on the data
+
 */
 package main
 
