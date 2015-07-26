@@ -1,0 +1,7 @@
+No try catch in Go
+funcs return error as their last return value
+Go has a predefined error interface type:
+    type error interface {
+        Error() string
+    }
+To exit in error state use: os.Exit(1)
