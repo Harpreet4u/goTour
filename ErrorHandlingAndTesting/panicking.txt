@@ -1,0 +1,4 @@
+Go panicking:
+If panic is called from a nested function, it immediately stops execution of the current function, ***all defer statements are guaranteed to execute*** and then control is given to the function caller, which receives this call to panic. This bubbles up to the top level, executing defers, and at the top of the stack the program crashes and the error condition is reported on the command-line using the value given to panic:  this termination sequence is called panicking.
+
+The standard library contains a number of functions whose name is prefixed with **Must**, like regexp.MustCompile or template.Must ; these functions panic() when converting the string which into a regular expression or template produces an error.
