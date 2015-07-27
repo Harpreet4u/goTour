@@ -1,0 +1,36 @@
+Reducing err checking and defer-panic-recover code redundancy with closures.
+
+1. check: func to test error and panic accordingly
+2. errorhandler: wraps defer-recover code of funcs
+
+
+func check(err error) { if err != nil { panic(err) } }
+
+
+fType = func f(a type1, b type2)
+
+func errorhandler(fn fType) fType {
+    return func(a type1, b type2) {
+        defer func() {
+            if e, ok := recover().(error); ok {
+                log.Printf("run time panic: %v", e)
+            }
+        }()
+        fn(a, b)
+    }
+}
+
+e.g:  func f1(a type1, b type2) {
+            t, err := f() // call func or method
+            check(err)
+      }
+       
+      func main() {
+            errorHandler(f1)
+            errorHandler(f2)
+       }
+
+NOTE:
+Using this mechanism all errors are recovered and the error-checking code after a function call is reduced to check(err) .In this scheme different error-handlers have to be used for different function types; they could be hidden inside an error-handling package. 
+
+Alternatively a more general approach could be using a slice of empty interface as parameter and return type.
