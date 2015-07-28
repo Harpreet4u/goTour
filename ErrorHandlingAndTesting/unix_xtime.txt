@@ -1,0 +1,4 @@
+Handy script for performance and memory usage checking:
+
+#!/bin/sh
+/usr/bin/time -f ‘%Uu %Ss %er %MkB %C’ “$@”
