@@ -1,0 +1,11 @@
+<- channel operator
+
+ch <- int1 // int1 is sent to channel
+
+int2 := <- ch // int2 receives value from channel
+
+<- ch  // outputs value from channel
+
+if <- ch != 1000 {
+    ....
+}
