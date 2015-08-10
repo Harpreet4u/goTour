@@ -1,0 +1,16 @@
+Channel - typed message queue
+unintialized value is nil
+FIFO order
+reference type
+
+use make to initialze channels
+
+ch := make(chan string)
+
+// channel of channels
+ch := make(chan chan int)
+
+// channel of functions:
+funcChan := chan func()
+
+synchronized and one channel owner at a time.
