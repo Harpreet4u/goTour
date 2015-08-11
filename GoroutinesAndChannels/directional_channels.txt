@@ -1,0 +1,6 @@
+var send_only chan<- int
+var recv_only <-chan int
+
+Receive-only channels (<-chan T) cannot be closed because closing a channel is intended as a way for a sender to signal that no more values will be sent to the channel.
+
+Normal channels are bidirectional.
